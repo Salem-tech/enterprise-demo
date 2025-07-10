@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Action Item Summary Report</title>
+    
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="./css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/datatables.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    
+    <!-- JavaScript Dependencies -->
+    <script src="./js/loader.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="./js/datatables.min.js"></script>
+    <script src="./script.js"></script>
+  </head>
+
+  <body>
+    <!-- Page Header -->
+    <header class="p-3 mb-3 border-bottom">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+              <use xlink:href="#bootstrap"></use>
+            </svg>
+          </a>
+          <h4 class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+             Action Item Summary Report
+          </h4>
+        </div>
+      </div>
+    </header>
+    
+    <br />
+    <div class="container">
+      <!-- Year Filter Dropdown -->
+      <select id="yearsList" aria-label="Year">
+        <option selected value="0">Select a year</option>
+        <option value="1">All Years</option>
+      </select>
+
+      <!-- Navigation Tabs -->
+      <br /><br /><br />
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-Department-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-Department"
+            type="button"
+            role="tab"
+            aria-controls="pills-Department"
+            aria-selected="false"
+            onclick="showTable(this.getAttribute('aria-controls'))"
+          >
+            Department
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-Div1-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-Div1"
+            type="button"
+            role="tab"
+            aria-controls="pills-Div1"
+            aria-selected="false"
+            onclick="showTable(this.getAttribute('aria-controls'))"
+          >
+            Div1
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-Group-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-Group"
+            type="button"
+            role="tab"
+            aria-controls="pills-Group"
+            aria-selected="false"
+            onclick="showTable(this.getAttribute('aria-controls'))"
+          >
+            Group
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-Unit-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-Unit"
+            type="button"
+            role="tab"
+            aria-controls="pills-Unit"
+            aria-selected="false"
+            onclick="showTable(this.getAttribute('aria-controls'))"
+          >
+            Unit
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-Div2-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-Div2"
+            type="button"
+            role="tab"
+            aria-controls="pills-Div2"
+            aria-selected="false"
+            onclick="showTable(this.getAttribute('aria-controls'))"
+          >
+            Div2
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-Div3-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-Div3"
+            type="button"
+            role="tab"
+            aria-controls="pills-Div3"
+            aria-selected="false"
+            onclick="showTable(this.getAttribute('aria-controls'))"
+          >
+            Div3
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-Div4-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-Div4"
+            type="button"
+            role="tab"
+            aria-controls="pills-Div4"
+            aria-selected="false"
+            onclick="showTable(this.getAttribute('aria-controls'))"
+          >
+            Div4
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-Div5-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-Div5"
+            type="button"
+            role="tab"
+            aria-controls="pills-Div5"
+            aria-selected="false"
+            onclick="showTable(this.getAttribute('aria-controls'))"
+          >
+            Div5
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-Div6-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-Div6"
+            type="button"
+            role="tab"
+            aria-controls="pills-Div6"
+            aria-selected="false"
+            onclick="showTable(this.getAttribute('aria-controls'))"
+          >
+            Div6
+          </button>
+        </li>
+      </ul>
+      
+      <!-- Tab Content Panels -->
+      <div class="tab-content" id="pills-tabContent">
+        <div
+        class="tab-pane fade"
+        id="pills-Department"
+        role="tabpanel"
+        aria-labelledby="pills-Department-tab"
+        tabindex="0"
+      >
+        <p>Department</p>
+      </div>
+        <div
+          class="tab-pane fade"
+          id="pills-Div1"
+          role="tabpanel"
+          aria-labelledby="pills-Div1-tab"
+          tabindex="0"
+        >
+          <p>Div1</p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-Group"
+          role="tabpanel"
+          aria-labelledby="pills-Group-tab"
+          tabindex="0"
+        >
+          <p>Group</p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-Unit"
+          role="tabpanel"
+          aria-labelledby="pills-Unit-tab"
+          tabindex="0"
+        >
+          <p>Unit</p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-Div2"
+          role="tabpanel"
+          aria-labelledby="pills-Div2-tab"
+          tabindex="0"
+        >
+          <p>Div2</p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-Div3"
+          role="tabpanel"
+          aria-labelledby="pills-Div3-tab"
+          tabindex="0"
+        >
+          <p>Div3</p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-Div4"
+          role="tabpanel"
+          aria-labelledby="pills-Div4-tab"
+          tabindex="0"
+        >
+          <p>Div4</p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-Div5"
+          role="tabpanel"
+          aria-labelledby="pills-Div5-tab"
+          tabindex="0"
+        >
+          <p>Div5</p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-Div6"
+          role="tabpanel"
+          aria-labelledby="pills-Div6-tab"
+          tabindex="0"
+        >
+          <p>Div6</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bootstrap Bundle Script -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
