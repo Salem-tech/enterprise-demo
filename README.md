@@ -1,4 +1,4 @@
-# <span style="color:#E74C3C;">Enterprise Demo</span>
+# 🏢 Enterprise Demo
 
 ---
 
@@ -7,35 +7,35 @@
 
 ---
 
-## <span style="color:#3498DB;">Overview</span>
+## 📋 Overview
 
-A collection of demos reflecting real-world enterprise patterns, showcasing **full-stack development**, **AI integration**, and **automation** using modern tools.
+A collection of demos reflecting real-world enterprise patterns, showcasing **full-stack development**, **data processing**, and **interactive dashboards** using modern web technologies.
 
 ---
 
-## <span style="color:#2ECC71;">Tech Stack & Tools</span>
+## 🛠️ Tech Stack & Tools
 
-### <span style="color:#F39C12;">Frontend</span>
+### 🎨 **Frontend**
 - HTML5, CSS3, JavaScript ES6+
 - Bootstrap 5.x Framework
 - jQuery 3.6.1
 
-### <span style="color:#9B59B6;">Data Processing</span>
+### 📊 **Data Processing**
 - SheetJS (XLSX.js) for Excel integration
 - DataTables.js for interactive tables
 - Microsoft Excel files (.xlsx)
 
-### <span style="color:#E67E22;">Visualization</span>
+### 📈 **Visualization**
 - Google Charts API
 - DataTables with sorting & pagination
 - Bootstrap Select components
 
-### <span style="color:#1ABC9C;">Libraries</span>
+### 📚 **Libraries**
 - Popper.js for positioning
 - Bootstrap utilities & components
 - Custom responsive CSS
 
-### <span style="color:#8E44AD;">Features</span>
+### ⚡ **Features**
 - Excel file processing & parsing
 - Interactive data dashboards
 - Year-based filtering
@@ -44,10 +44,10 @@ A collection of demos reflecting real-world enterprise patterns, showcasing **fu
 
 ---
 
-## <span style="color:#E74C3C;">Purpose</span>
+## 🎯 Purpose
 
 ✅ **Demonstrate skills** across multiple enterprise scenarios  
-✅ **Integrate AI tools** into real use cases  
+✅ **Build interactive dashboards** with real data processing  
 ✅ **Present a modular** and professional codebase
 
 ---
