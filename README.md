@@ -1,35 +1,53 @@
-enterprise-demo
+# <span style="color:#E74C3C;">Enterprise Demo</span>
 
-> ⚠️ Note: This repository contains generalized and redacted versions of several enterprise-inspired projects.
-All sensitive code and data have been removed. These demos are for portfolio and learning use only.
+---
 
+> ⚠️ **Note:** This repository contains generalized and redacted versions of several enterprise-inspired projects.  
+> All sensitive code and data have been removed. These demos are for portfolio and learning use only.
 
+---
 
-Overview
+## <span style="color:#3498DB;">Overview</span>
 
-A collection of demos reflecting real-world enterprise patterns, showcasing full-stack development, AI integration, and automation using modern tools.
+A collection of demos reflecting real-world enterprise patterns, showcasing **full-stack development**, **AI integration**, and **automation** using modern tools.
 
-Tech Stack & Tools
+---
 
-Frontend: React, Vue, or JS
+## <span style="color:#2ECC71;">Tech Stack & Tools</span>
 
-Backend: Node.js, .NET, or FastAPI
+### <span style="color:#F39C12;">Frontend</span>
+- HTML5, CSS3, JavaScript ES6+
+- Bootstrap 5.x Framework
+- jQuery 3.6.1
 
-DB: PostgreSQL, MongoDB, SQL Server
+### <span style="color:#9B59B6;">Data Processing</span>
+- SheetJS (XLSX.js) for Excel integration
+- DataTables.js for interactive tables
+- Microsoft Excel files (.xlsx)
 
-APIs: REST / GraphQL
+### <span style="color:#E67E22;">Visualization</span>
+- Google Charts API
+- DataTables with sorting & pagination
+- Bootstrap Select components
 
-AI Tools: OpenAI API, Azure AI, Hugging Face, LangChain
+### <span style="color:#1ABC9C;">Libraries</span>
+- Popper.js for positioning
+- Bootstrap utilities & components
+- Custom responsive CSS
 
-Automation: GitHub Actions, Docker
+### <span style="color:#8E44AD;">Features</span>
+- Excel file processing & parsing
+- Interactive data dashboards
+- Year-based filtering
+- Division-based data views
+- Real-time chart updates
 
-Extras: SharePoint (Data Lists, Excel Library), Excel frameworks (e.g., SheetJS, ExcelJS), Google Charts, Power Automate, Chart.js / D3
+---
 
+## <span style="color:#E74C3C;">Purpose</span>
 
-Purpose
+✅ **Demonstrate skills** across multiple enterprise scenarios  
+✅ **Integrate AI tools** into real use cases  
+✅ **Present a modular** and professional codebase
 
-Demonstrate skills across multiple enterprise scenarios
-
-Integrate AI tools into real use cases
-
-Present a modular and professional codebase
+---
