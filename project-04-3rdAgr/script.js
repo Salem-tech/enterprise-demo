@@ -10,16 +10,16 @@ window.addEventListener('scroll', () => {
 
 // Offline Mode - Example Data
 const exampleData = [
-    { id: 1, type: "Add Permission", userType: "Internal", status: "Approved", date: "2024-11-20" },
-    { id: 2, type: "Add Permission", userType: "External", status: "Rejected", date: "2024-11-19" },
-    { id: 3, type: "Add Permission", userType: "Internal", status: "Pending", date: "2024-11-21" },
-    { id: 4, type: "Add Permission", userType: "External", status: "Approved", date: "2024-11-20" },
+    { id: 1, type: "Add Permission", userType: "Type A", status: "Approved", date: "2024-11-20" },
+    { id: 2, type: "Add Permission", userType: "Type B", status: "Rejected", date: "2024-11-19" },
+    { id: 3, type: "Add Permission", userType: "Type A", status: "Pending", date: "2024-11-21" },
+    { id: 4, type: "Add Permission", userType: "Type B", status: "Approved", date: "2024-11-20" },
 ];
 
 function updateTableOffline(data) {
     const counts = {
-        Internal: { Pending: 0, Approved: 0, Rejected: 0 },
-        External: { Pending: 0, Approved: 0, Rejected: 0 },
+        "Type A": { Pending: 0, Approved: 0, Rejected: 0 },
+        "Type B": { Pending: 0, Approved: 0, Rejected: 0 },
     };
 
     data.forEach(item => {
@@ -28,12 +28,12 @@ function updateTableOffline(data) {
         }
     });
 
-    document.getElementById("internal-pending").innerText = counts.Internal.Pending;
-    document.getElementById("internal-approved").innerText = counts.Internal.Approved;
-    document.getElementById("internal-rejected").innerText = counts.Internal.Rejected;
-    document.getElementById("external-pending").innerText = counts.External.Pending;
-    document.getElementById("external-approved").innerText = counts.External.Approved;
-    document.getElementById("external-rejected").innerText = counts.External.Rejected;
+    document.getElementById("typea-pending").innerText = counts["Type A"].Pending;
+    document.getElementById("typea-approved").innerText = counts["Type A"].Approved;
+    document.getElementById("typea-rejected").innerText = counts["Type A"].Rejected;
+    document.getElementById("typeb-pending").innerText = counts["Type B"].Pending;
+    document.getElementById("typeb-approved").innerText = counts["Type B"].Approved;
+    document.getElementById("typeb-rejected").innerText = counts["Type B"].Rejected;
 }
 
 // Online Mode - SharePoint Integration

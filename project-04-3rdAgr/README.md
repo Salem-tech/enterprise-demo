@@ -9,7 +9,7 @@
 
 ## 🎯 Overview
 
-Web-based management system for organizational agreements with real-time analytics and reporting capabilities. Features comprehensive tracking and role-based access control for efficient workflow management.
+Web-based management system for business agreements with real-time analytics and reporting capabilities. Features comprehensive tracking and role-based access control for efficient workflow management.
 
 ## 📸 Application Preview
 
@@ -21,14 +21,14 @@ Web-based management system for organizational agreements with real-time analyti
 
 - 📅 **Agreement Management** - Track active and expired agreements
 - 📊 **Real-time Metrics** - Weekly and yearly statistics dashboard
-- 🔐 **Role-based Access** - ISA, Contract Coordinator, Proponent, and Viewer roles
-- 📋 **Request Tracking** - Internal vs External request status monitoring
+- 🔐 **Role-based Access** - Admin, Contract Coordinator, Proponent, and Viewer roles
+- 📋 **Request Tracking** - Type A vs Type B request status monitoring
 - 🎨 **Dynamic Navigation** - Scroll-responsive navbar with visual transitions
 - 📱 **Responsive Design** - Mobile-friendly Bootstrap 5 interface
 
 ## 🚀 SharePoint Integration
 
-Integrated with SharePoint API to fetch agreement data, request statuses, and metrics from multiple lists including Agreements, Internal Requests, and External Requests with automated data processing and visualization.
+Integrated with SharePoint API to fetch agreement data, request statuses, and metrics from multiple lists including Agreements, Type A Requests, and Type B Requests with automated data processing and visualization.
 
 ## 🛠️ Technical Stack
 
@@ -65,8 +65,8 @@ Integrated with SharePoint API to fetch agreement data, request statuses, and me
 
 <div align="center">
 
-**Enterprise Third-Party Agreement Management Platform**
+**Business Third-Party Agreement Management Platform**
 
-*Built for organizational efficiency and compliance-driven decision making*
+*Built for system efficiency and compliance-driven decision making*
 
 </div>
