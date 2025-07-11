@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Calendar widget styling - responsive grid layout with hover effects */
+    body {
+      background-color: #f0f2f5;
+    }
+
+    .calendar-container {
+      max-width: 350px;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #007bff;
+      color: #fff;
+      padding: 0.5rem;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      border-bottom: 2px solid #0056b3;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-gap: 0;
+      background-color: #fff;
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
+
+    .calendar .day {
+      position: relative;
+      padding: 0.2rem;
+      border: 1px solid #ddd;
+      border-radius: 0.2rem;
+      background-color: #fff;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 0;
+      padding-bottom: 100%;
+      overflow: hidden;
+    }
+
+    .calendar .day:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      overflow: visible;
+      z-index: 2;
+    }
+
+    .calendar .day .event-details {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      width: 200px;
+      text-align: left;
+      border-radius: 0.5rem;
+      white-space: normal;
+      overflow: hidden;
+    }
+
+    .calendar .day:hover .event-details {
+      display: block;
+      color: black !important;
+    }
+
+    .calendar .day.past-day {
+      color: #aaa;
+    }
+
+    .calendar .day.current-day {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .calendar .day.has-event {
+      background-color: #ffc107;
+    }
+  </style>
+  <title>Calendar</title>
+</head>
+<body>
+  <!-- Main calendar widget with navigation and event display -->
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <button id="prev" class="btn btn-light btn-sm">Previous</button>
+      <h5 id="month-year" class="m-0"></h5>
+      <button id="next" class="btn btn-light btn-sm">Next</button>
+    </div>
+    <div class="calendar" id="calendar">
+      <!-- Calendar days will be generated here -->
+    </div>
+  </div>
+
+  <!-- Bootstrap and jQuery dependencies for UI and AJAX -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+
+  <!-- Development Timeline: Project completed July 2025 -->
+</body>
+</html>
