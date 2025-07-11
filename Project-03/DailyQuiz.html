@@ -1,0 +1,219 @@
+<!--Done-->
+<!--make points added when choose correct answer based on a continusity number and if didn't answer yesterday continsutiy reset to 1 (reading modification date)-->
+<!---->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #quiz-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            height: auto;
+            /* Adjusted to fit content */
+        }
+
+        #question-container {
+            transition: all 1s ease;
+            /* Smooth transition */
+        }
+
+        #ranking-container {
+            text-align: center;
+            opacity: 0;
+            /* Initially hidden */
+            transition: all 1s ease;
+            /* Smooth transition */
+            height: 0;
+            /* Allow height to adjust dynamically */
+        }
+
+        #points {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #top-players {
+            list-style: none;
+            padding: 0;
+            font-size: 18px;
+            margin: 0;
+            text-align: left;
+        }
+
+        #top-players li {
+            margin: 10px 0;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        #top-players .first {
+            background: #ffcc00;
+            color: #333;
+        }
+
+        #top-players .second {
+            background: #c0c0c0;
+            color: #333;
+        }
+
+        #top-players .third {
+            background: #cd7f32;
+            color: #333;
+        }
+
+        #status-container {
+            text-align: center;
+            background: #f4f4f9;
+            border: 1px solid #e1e1e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in;
+            /* Fade-in animation */
+        }
+
+        #status-container p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .update-message {
+            font-size: 22px;
+            color: #28a745;
+            margin-top: 20px;
+        }
+
+        /* Fireworks animation styles */
+        #firework-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            display: none;
+            /* Hide canvas by default */
+        }
+
+        /* Button styles */
+        .answer {
+            position: relative;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .answer.correct {
+            background-color: #28a745;
+            /* Green background for correct answers */
+            color: #fff;
+            border-color: #28a745;
+            /* Match border color with background */
+        }
+
+        .answer.wrong {
+            background-color: #dc3545;
+            /* Red background for wrong answers */
+            color: #fff;
+            border-color: #dc3545;
+            /* Match border color with background */
+        }
+
+        .answer.clicked {
+            border: 2px solid black;
+            /* Black border for clicked button */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+            /* Subtle shadow to enhance border */
+            transition: border 0.3s ease, box-shadow 0.3s ease;
+            /* Smooth transition for border and shadow */
+        }
+
+        .answer.clicked:hover {
+            /* Enhanced hover effect for clicked button */
+            border: 2px solid #333;
+            /* Slightly darker border on hover */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            /* More pronounced shadow on hover */
+        }
+
+        .answer.disabled {
+            pointer-events: none;
+            /* Disable clicks but keep styles */
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="quiz-container" class="container">
+        <div class="row" style="margin-bottom: 2%;">
+            <div id="question-container" class="col-12">
+                <p id="question">What is the capital of Saudi Arabia?</p>
+                <div id="answers">
+                    <button class="answer btn btn-primary btn-block">Riyadh</button>
+                    <button class="answer btn btn-primary btn-block">Jeddah</button>
+                    <button class="answer btn btn-primary btn-block">Dammam</button>
+                    <button class="answer btn btn-primary btn-block">Mecca</button>
+                </div>
+            </div>
+            <div id="ranking-container" class="col">
+                <p>Points: <span id="points">0</span></p>
+                <p id="ranking-title">Top 3 Players:</p>
+                <ul id="top-players">
+                    <!-- Static data for testing -->
+                    <li class="first">Ahmed: 150 points</li>
+                    <li class="second">Fatima: 120 points</li>
+                    <li class="third">Omar: 100 points</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div id="status-container" class="col-12">
+                <p class="update-message">Great job! Come back tomorrow for the next question!</p>
+            </div>
+        </div>
+        <canvas id="firework-canvas"></canvas>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
