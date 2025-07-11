@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agreements Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Fixed navbar with initial black background and white text */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1030;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+        }
+
+        .navbar .nav-link, .navbar-brand {
+            color: white !important;
+            transition: color 0.3s;
+        }
+
+        /* Change navbar to white background with black text on scroll */
+        .navbar.scrolled {
+            background-color: white !important;
+            color: black !important;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar.scrolled .nav-link, .navbar.scrolled .navbar-brand {
+            color: black !important;
+        }
+
+        /* Center navigation links */
+        .navbar-center {
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        /* Offset for the content */
+        .content-offset {
+            margin-top: 70px; /* Adjust to match the navbar height */
+        }
+
+        .overview-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .agreement-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .metrics-section {
+            margin-top: 30px;
+        }
+
+        .table-section {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Agreements Management System</a>
+            <div class="navbar-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            ISA
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#isa-site1">ISA Site 1</a></li>
+                            <li><a class="dropdown-item" href="#isa-site2">ISA Site 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Contract Coordinator
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#cc-site1">Coordinator Site 1</a></li>
+                            <li><a class="dropdown-item" href="#cc-site2">Coordinator Site 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Contract Proponent
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#cp-site1">Proponent Site 1</a></li>
+                            <li><a class="dropdown-item" href="#cp-site2">Proponent Site 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Direct Viewer
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#dv-site1">Viewer Site 1</a></li>
+                            <li><a class="dropdown-item" href="#dv-site2">Viewer Site 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Section -->
+    <div class="content-offset container">
+        <!-- Overview Section -->
+        <div class="overview-section">
+            <h1 class="text-primary">System Overview</h1>
+            <p>
+                The <strong>Agreements Management System</strong> is an integrated platform designed to manage organizational agreements effectively. 
+                It centralizes data, streamlines operations, and offers real-time metrics to assist in decision-making.
+            </p>
+            <h3>Goals</h3>
+            <ul>
+                <li>Enhance visibility of agreements through centralized data management.</li>
+                <li>Provide weekly and yearly metrics for actionable insights.</li>
+                <li>Ensure compliance with organizational policies for secure data handling.</li>
+                <li>Support operational workflows with efficient tracking and reporting.</li>
+                <li>Enable data-driven decisions with automated metrics.</li>
+            </ul>
+        </div>
+
+        <!-- Active and Expired Agreements Section -->
+        <div class="agreement-section">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Active Agreements</h5>
+                            <p class="card-text" id="active-agreements">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Expired Agreements</h5>
+                            <p class="card-text" id="expired-agreements">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metrics Section -->
+        <div class="metrics-section">
+            <h2 class="text-info">Metrics</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Weekly Requests</h5>
+                            <p class="card-text" id="weekly-total">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Weekly Approved Requests</h5>
+                            <p class="card-text" id="weekly-approved">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Weekly Rejected Requests</h5>
+                            <p class="card-text" id="weekly-rejected">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Yearly Requests</h5>
+                            <p class="card-text" id="yearly-total">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-success text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Yearly Approved Requests</h5>
+                            <p class="card-text" id="yearly-approved">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-danger text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Yearly Rejected Requests</h5>
+                            <p class="card-text" id="yearly-rejected">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-section">
+            <h2 class="text-success">Current Week Requests Status</h2>
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">User Type</th>
+                        <th scope="col">Pending</th>
+                        <th scope="col">Approved</th>
+                        <th scope="col">Rejected</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Internal</td>
+                        <td id="internal-pending">0</td>
+                        <td id="internal-approved">0</td>
+                        <td id="internal-rejected">0</td>
+                    </tr>
+                    <tr>
+                        <td>External</td>
+                        <td id="external-pending">0</td>
+                        <td id="external-approved">0</td>
+                        <td id="external-rejected">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
