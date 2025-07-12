@@ -11,6 +11,10 @@
 
 Interactive calendar widget designed for enterprise environments with SharePoint integration. Features event display, month navigation, and hover-based event details for seamless organizational event management.
 
+## 📸 Preview
+
+![Events Calendar Preview](img/events-calendar-preview.png)
+
 ## ✨ Features
 
 - 📅 **Month Navigation** - Navigate between months with Previous/Next buttons
